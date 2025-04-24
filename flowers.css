@@ -1,57 +1,59 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+.flower {
+    position: absolute;
+    will-change: transform, opacity;
+    animation-timing-function: ease-in-out;
+    pointer-events: none;
   }
   
-  body {
-    height: 100vh;
-    background: #f0f8ff;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: sans-serif;
-    position: relative;
-    cursor: pointer;
+  @keyframes floatUpWavy {
+    0% {
+      transform: translateY(100vh) translateX(0) rotate(0deg);
+      opacity: 0;
+    }
+    30% {
+      opacity: 1;
+    }
+    50% {
+      transform: translateY(50vh) translateX(-20px) rotate(180deg);
+    }
+    100% {
+      transform: translateY(-10vh) translateX(20px) rotate(360deg);
+      opacity: 0;
+    }
   }
   
-  .message {
-    font-size: 3rem;
-    color: #ff69b4;
-    z-index: 1;
+  @keyframes floatDownWavy {
+    0% {
+      transform: translateY(-10vh) translateX(0) rotate(0deg);
+      opacity: 0;
+    }
+    30% {
+      opacity: 1;
+    }
+    50% {
+      transform: translateY(50vh) translateX(20px) rotate(180deg);
+    }
+    100% {
+      transform: translateY(100vh) translateX(-20px) rotate(360deg);
+      opacity: 0;
+    }
   }
   
   .flower {
-    position: absolute;
-    animation-timing-function: linear;
+    font-size: 1.5rem; /* Default size for larger screens */
   }
   
-  @keyframes floatUp {
-    0% {
-      transform: translateY(100vh) rotate(0deg);
-      opacity: 0;
-    }
-    50% {
-      opacity: 1;
-    }
-    100% {
-      transform: translateY(-10vh) rotate(360deg);
-      opacity: 0;
+  @media (max-width: 768px) {
+    /* For tablets and smaller screens */
+    .flower {
+      font-size: 2.5rem; /* Larger flowers for phones/tablets */
     }
   }
   
-  @keyframes floatDown {
-    0% {
-      transform: translateY(-10vh) rotate(0deg);
-      opacity: 0;
-    }
-    50% {
-      opacity: 1;
-    }
-    100% {
-      transform: translateY(100vh) rotate(360deg);
-      opacity: 0;
+  @media (max-width: 480px) {
+    /* For very small phone screens */
+    .flower {
+      font-size: 3.5rem; /* Even larger flowers on phones */
     }
   }
   
