@@ -8,29 +8,29 @@ function startFlowerRain() {
       flower.classList.add('flower');
       flower.innerText = flowers[Math.floor(Math.random() * flowers.length)];
   
-      const isUp = Math.random() < 0.5; // 50% chance for up or down
+      const isUp = Math.random() < 0.5;
+  
+      const size = 1 + Math.random() * 1.5;
+      flower.style.fontSize = `${size}rem`;
       flower.style.left = Math.random() * 100 + 'vw';
-      flower.style.fontSize = (1 + Math.random() * 2) + 'rem';
-      flower.style.animationName = isUp ? 'floatUp' : 'floatDown';
+      flower.style.animationName = isUp ? 'floatUpWavy' : 'floatDownWavy';
+      flower.style.animationDuration = (4 + Math.random() * 3) + 's';
+      flower.style.animationDelay = Math.random() * 2 + 's';
       flower.style.top = isUp ? 'auto' : '-10vh';
       flower.style.bottom = isUp ? '-10vh' : 'auto';
-      flower.style.animationDuration = (3 + Math.random() * 3) + 's';
+      flower.style.opacity = 0;
   
       document.body.appendChild(flower);
   
       setTimeout(() => {
         flower.remove();
-      }, 6000);
+      }, 8000);
     }
   
-    // Initial burst
-    for (let i = 0; i < 200; i++) {
-      createFlower();
-    }
+    for (let i = 0; i < 50; i++) createFlower();
   
-    // Continuous rain
     setInterval(() => {
-      createFlower();
-    }, 100);
+      for (let i = 0; i < 2; i++) createFlower();
+    }, 150);
   }
   
